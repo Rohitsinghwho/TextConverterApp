@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-export default function TextPlain() {
+export default function TextPlain(props) {
   const [text, settext] = useState("Hey This is a Dummy Text!");
   //fucntion to convert to uppercase
   const ConvertUpper = () => {
@@ -29,25 +29,49 @@ export default function TextPlain() {
         <div className="container my-5 text-center">
           <button
             type="button"
-            className="btn btn-primary mx-2"
+            className={`btn btn-primary mx-2 ${
+              props.mode === "light"
+                ? "text-white border border-primary border-2"
+                : "text-black  border border-success border-3"
+            }`}
             onClick={ConvertUpper}
           >
             UpperCase
           </button>
           <button
             type="button"
-            className="btn btn-primary mx-2"
+            className={`btn btn-primary mx-2 ${
+              props.mode === "light"
+                ? "text-white border border-primary border-2"
+                : "text-black  border border-success border-3"
+            }`}
             onClick={ConvertLower}
           >
             LowerCase
           </button>
         </div>
-        <p>
-          Total letters with spaces are {text.length} and total words are
+        <p
+          className={` my-5 ${
+            props.mode === "light" ? "text-black" : "text-white"
+          }`}
+        >
+          Total letters with spaces are {text.length} and total words are{"  "}
           {text.split(" ").length}
         </p>
-        <h3>Preview</h3>
-        <p>{text}</p>
+        <h3
+          className={`my-8 ${
+            props.mode === "light" ? "text-black" : "text-white"
+          }`}
+        >
+          Preview
+        </h3>
+        <p
+          className={` my-3 ${
+            props.mode === "light" ? "text-black" : "text-white"
+          }`}
+        >
+          {text}
+        </p>
       </div>
     </>
   );
