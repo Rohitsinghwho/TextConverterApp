@@ -5,10 +5,12 @@ export default function TextPlain(props) {
   //fucntion to convert to uppercase
   const ConvertUpper = () => {
     settext(text.toUpperCase());
+    props.showAlert("Converted to UpperCase", "success");
   };
   //fucntion to convert in lowercase
   const ConvertLower = () => {
     settext(text.toLowerCase());
+    props.showAlert("Converted to LowerCase", "success");
   };
   // Adding additonal values in the textarea
   const HandleOnchangeText = (e) => {
