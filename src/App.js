@@ -1,10 +1,10 @@
+import About from "./About";
 import "./App.css";
 import ComponentAlert from "./ComponentAlert";
 import Navbar from "./Navbar";
-
 import TextPlain from "./TextPlain";
 import { useState } from "react";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
   const [mode, setDarkMode] = useState("light");
   const [alert, setAlert] = useState(null);
@@ -33,17 +33,29 @@ function App() {
   };
   return (
     <>
-      <Navbar title="MY React APP" mode={mode} toogleMode={toogleMode} />
-      <ComponentAlert alert={alert} />
+      <BrowserRouter>
+        <Navbar title="MY React APP" mode={mode} toogleMode={toogleMode} />
+        <ComponentAlert alert={alert} />
+        <Routes>
+          <Route
+            exact
+            path="/about"
+            element={<About heading="About Us" mode={mode} />}
+          />
 
-      <h1
-        className={`text-center my-5 ${
-          mode === "light" ? "text-black" : "text-white"
-        }`}
-      >
-        Text Converter
-      </h1>
-      <TextPlain mode={mode} showAlert={showAlert} />
+          <Route
+            exact
+            path="/"
+            element={
+              <TextPlain
+                mode={mode}
+                showAlert={showAlert}
+                heading="Text Converter"
+              />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
