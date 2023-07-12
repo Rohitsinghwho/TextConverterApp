@@ -18,6 +18,13 @@ export default function TextPlain(props) {
   };
   return (
     <>
+      <h1
+        className={`text-center my-5 ${
+          props.mode === "light" ? "text-black" : "text-white"
+        }`}
+      >
+        {props.heading}
+      </h1>
       <div className="container my-5">
         <div className="form-floating">
           <textarea
